@@ -33,7 +33,7 @@ while IFS= read -r line ; do printf '%s\n' "${yel} $i) $line ${end}" ; i=$((i + 
         do
             read -rp "${grn}Score you want to know:-${end} " choice
             score=$(cat matchFile.txt | grep -Pw "^$choice" | cut -d' ' -f 2)
-            curl -Ls $score 2>/dev/null 2>/dev/null | grep -Eo '([A-Z]){2,4}([0-9]+)?\s([0-9]){1,3}(,|/)(\s|[0-9]+)(\s|[0-9]+)[/(]([0-9]+)(\s|.)[(0-9]+([.0-9)]+)?'
+            curl -Ls $score 2>/dev/null | grep -Eo '([A-Z]){2,4}([0-9]+)?\s([0-9]){1,3}(,|/)(\s|[0-9]+)(\s|[0-9]+)[/(]([0-9]+)(\s|.)[(0-9]+([.0-9)]+)?'
             if [ "$?" -ne 0 ]
             then
                 echo -e "${RED}I think match is not started yet.${NC}"
