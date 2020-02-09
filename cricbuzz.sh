@@ -77,8 +77,9 @@ do
         matchName=$(echo "$matchHeading" | sed -n "$subChoice p")
         echo -e "\n"
         printf '%s\n' "${yel}$subChoice)$matchName${end}"
-        #Extracting URL from the file according to the numeric id given by user.
-        score=$(cat matchFileqwxert.txt | grep -Pw "^$subChoice" | cut -d' ' -f 2)
+        #Extracting URL from the file according to the numeric id given by user and saving it to score variable.
+        score=$(grep -Pw "^$subChoice" matchFileqwxert.txt | cut -d' ' -f 2)
+        #Doing curl to the URL and extracting RUNS from the page using RegEx.
         curl -Ls $score 2>/dev/null | grep -Eo '([A-Z]){2,4}([0-9]+)?\s([0-9]){1,3}(,|/)(\s|[0-9]+)(\s|[0-9]+)[/(]([0-9]+)(\s|.)[(0-9]+([.0-9)]+)?'
         if [ "$?" -ne 0 ]
         then
