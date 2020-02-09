@@ -17,7 +17,7 @@ echo -e "${RED}[+] Fetching Current Matches [+]${NC}"
 echo -e "${RED}--------------------------------\n${NC}"
 
 #To grab the list of URLs of current cricket matches
-currentMatches=$(curl -sL https://www.cricbuzz.com/cricket-match/live-scores | grep -Po 'live-cricket-scores\/\d{5}/(\w+)' | sort -ur | sed 's|^|https://cricbuzz.com/|g')
+currentMatches=$(curl -sL https://www.cricbuzz.com/cricket-match/live-scores | grep -Po 'live-cricket-scores\/\d{5}/(\w+)' | sort -ur | sed 's|^|https://cricbuzz.com/|')
 
 for i in "$currentMatches"
 do
